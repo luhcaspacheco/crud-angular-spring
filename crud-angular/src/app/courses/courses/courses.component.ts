@@ -1,3 +1,4 @@
+import { CoursesService } from './../services/courses.service';
 import { Course } from './../model/course';
 import { Component } from '@angular/core';
 
@@ -8,18 +9,21 @@ import { Component } from '@angular/core';
 })
 export class CoursesComponent {
 
-  courses: Course[] = [
-    {_id : '1', name: 'Angular', category: 'Front-End'},
-    {_id : '2', name: 'Spring', category: 'Back-End'}
-  ];
+  courses: Course[] = [];
 
   displayedColumns = ['name', 'category'];
 
-  constructor() {
+  //coursesService: CoursesService;
+
+  constructor(private coursesService: CoursesService ) {
     //this.courses = [];
+    //this.coursesService = new CoursesService();
+
   }
 
   ngOnInit(): void {
+
+    this.courses = this.coursesService.list();
 
   }
 
